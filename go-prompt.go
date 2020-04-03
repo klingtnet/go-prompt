@@ -120,6 +120,9 @@ func main() {
 	}
 	line := ""
 	for _, f := range fields {
+		if f.value == "" {
+			continue
+		}
 		line += c.colored(f.value, f.color)
 	}
 	line += " "
