@@ -123,7 +123,11 @@ func main() {
 		if f.value == "" {
 			continue
 		}
-		line += c.colored(f.value, f.color)
+		if f.color == "" {
+			line += f.value
+		} else {
+			line += c.colored(f.value, f.color)
+		}
 	}
 	io.WriteString(os.Stdout, line)
 }
