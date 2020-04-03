@@ -9,7 +9,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/muesli/termenv"
+	"github.com/klingtnet/termenv"
 	"gopkg.in/src-d/go-git.v4"
 )
 
@@ -104,6 +104,8 @@ func main() {
 	if os.Args[1] != "0" {
 		statusCode = os.Args[1]
 	}
+
+	termenv.ForceColor = true
 	c := newColorist()
 
 	wd := mustWd()
