@@ -2,7 +2,7 @@ package main
 
 import (
 	"errors"
-	"fmt"
+	"io"
 	"log"
 	"os"
 	"os/user"
@@ -123,5 +123,5 @@ func main() {
 		line += c.colored(f.value, f.color)
 	}
 	line += " "
-	fmt.Print(line)
+	io.WriteString(os.Stdout, line)
 }
