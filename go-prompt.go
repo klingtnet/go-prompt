@@ -75,7 +75,7 @@ func gitInfo(wd string) string {
 		return ""
 	}
 	s := strings.Split(ref.Name().Short(), "/")
-	return "(" + s[len(s)-1] + ")"
+	return s[len(s)-1]
 }
 
 const prompt = ">"
@@ -113,8 +113,9 @@ func main() {
 		{mustUser(), "#ff0000"},
 		{"@", "#ff5f00"},
 		{mustHostname(), "#ff8700"},
+		{" in ", ""},
 		{shortenPath(wd), "#ffaf00"},
-		{gitInfo(wd), "#ffd700"},
+		{" git:" + gitInfo(wd), "#ffd700"},
 		{statusCode, "#ff00ff"},
 		{"\n" + prompt + " ", "#ffff00"},
 	}
