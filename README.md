@@ -7,9 +7,9 @@ A tiny Go program that generates my WSL bash prompt.
 You can try it out like this (note that this is actually colorized):
 
 ```sh
-$  go run go-prompt.go 123 && echo
-alinz@DESKTOP-NK6M18P in ~/code/go-prompt git:master123
->
+$ go run go-prompt.go 123 && echo
+alinz@DESKTOP-NK6M18P in ~/code/go-prompt git:master errno:123
+> 
 ```
 
 ## Setup
