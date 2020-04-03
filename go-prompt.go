@@ -78,7 +78,7 @@ func gitInfo(wd string) string {
 	return "(" + s[len(s)-1] + ")"
 }
 
-const prompt = "$"
+const prompt = ">"
 
 type colorist struct {
 	profile termenv.Profile
@@ -116,7 +116,7 @@ func main() {
 		{shortenPath(wd), "#ffaf00"},
 		{gitInfo(wd), "#ffd700"},
 		{statusCode, "#ff00ff"},
-		{prompt, "#ffff00"},
+		{"\n" + prompt + " ", "#ffff00"},
 	}
 	line := ""
 	for _, f := range fields {
@@ -125,6 +125,5 @@ func main() {
 		}
 		line += c.colored(f.value, f.color)
 	}
-	line += " "
 	io.WriteString(os.Stdout, line)
 }
