@@ -2,6 +2,16 @@
 
 A tiny Go program that generates my WSL bash prompt.
 
+## Example
+
+You can try it out like this (note that this is actually colorized):
+
+```sh
+$  go run go-prompt.go 123 && echo
+alinz@DESKTOP-NK6M18P in ~/code/go-prompt git:master123
+>
+```
+
 ## Setup
 
 Run `make install` and patch your `.bashrc` like this (or see this [example](https://github.com/klingtnet/wsl-environment/commit/c0df02cd3a29e46bf1cbb8256377bb981d2624d4)):
