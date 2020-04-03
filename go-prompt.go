@@ -95,8 +95,9 @@ func (c *colorist) colored(s, color string) string {
 }
 
 type field struct {
-	value string
-	color string
+	prefix string
+	value  string
+	color  string
 }
 
 func main() {
@@ -110,14 +111,14 @@ func main() {
 
 	wd := mustWd()
 	fields := []field{
-		{mustUser(), "#ff0000"},
-		{"@", "#ff5f00"},
-		{mustHostname(), "#ff8700"},
-		{" in ", ""},
-		{shortenPath(wd), "#ffaf00"},
-		{" git:" + gitInfo(wd), "#ffd700"},
-		{statusCode, "#ff00ff"},
-		{"\n" + prompt + " ", "#ffff00"},
+		{"", mustUser(), "#ff0000"},
+		{"", "@", "#ff5f00"},
+		{"", mustHostname(), "#ff8700"},
+		{"", " in ", ""},
+		{"", shortenPath(wd), "#ffaf00"},
+		{" git:", gitInfo(wd), "#ffd700"},
+		{"", statusCode, "#ff00ff"},
+		{"\n", prompt + " ", "#ffff00"},
 	}
 	line := ""
 	for _, f := range fields {
@@ -125,9 +126,9 @@ func main() {
 			continue
 		}
 		if f.color == "" {
-			line += f.value
+			line += f.prefix + f.value
 		} else {
-			line += c.colored(f.value, f.color)
+			line += c.colored(f.prefix+f.value, f.color)
 		}
 	}
 	io.WriteString(os.Stdout, line)
