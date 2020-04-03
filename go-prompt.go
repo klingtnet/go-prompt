@@ -78,6 +78,16 @@ func gitInfo(wd string) string {
 	return s[len(s)-1]
 }
 
+func statusCode(args []string) string {
+	if len(args) == 0 {
+		return "no status code"
+	}
+	if args[1] != "0" {
+		return os.Args[1]
+	}
+	return ""
+}
+
 const prompt = ">"
 
 type colorist struct {
@@ -101,11 +111,6 @@ type field struct {
 }
 
 func main() {
-	var statusCode string
-	if os.Args[1] != "0" {
-		statusCode = os.Args[1]
-	}
-
 	termenv.ForceColor = true
 	c := newColorist()
 
@@ -117,7 +122,7 @@ func main() {
 		{"", " in ", ""},
 		{"", shortenPath(wd), "#ffaf00"},
 		{" git:", gitInfo(wd), "#ffd700"},
-		{"", statusCode, "#ff00ff"},
+		{" errno:", statusCode(os.Args), "#ff00ff"},
 		{"\n", prompt + " ", "#ffff00"},
 	}
 	line := ""
