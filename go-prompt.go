@@ -123,7 +123,7 @@ func main() {
 		{"", shortenPath(wd), "#ffaf00"},
 		{" git:", gitInfo(wd), "#ffd700"},
 		{" errno:", statusCode(os.Args), "#ff00ff"},
-		{"\n", prompt + " ", "#ffff00"},
+		{"\n", prompt + " ", ""},
 	}
 	line := ""
 	for _, f := range fields {
